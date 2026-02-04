@@ -1,13 +1,34 @@
+# PowerPoint presentations (do not commit)
+*.pptx
+*.ppt
+
+# Homework instruction files (source, not needed in repo)
+Homework*.txt
+
 # Flutter / Dart
 .dart_tool/
 .packages
 build/
 .pub-cache/
+.pub/
+*.iml
 
 # IDE
 .vscode/
 .idea/
+*.ipr
+*.iws
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Generated files
+*.g.dart
+*.freezed.dart
+
+# Miscellaneous
+*.log
+*.swp
+*~
