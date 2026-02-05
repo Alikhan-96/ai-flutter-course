@@ -1,6 +1,7 @@
 # PowerPoint presentations (do not commit)
 *.pptx
 *.ppt
+*.docx
 
 # Homework instruction files (source, not needed in repo)
 Homework*.txt
@@ -32,3 +33,5 @@ desktop.ini
 *.log
 *.swp
 *~
+
+.claude
