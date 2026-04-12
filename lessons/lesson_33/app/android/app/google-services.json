@@ -1,45 +1,45 @@
 {
   "project_info": {
-    "project_number": "757439910106",
-    "project_id": "test-project-43a0c",
-    "storage_bucket": "test-project-43a0c.firebasestorage.app"
+    "project_number": "REPLACE_WITH_PROJECT_NUMBER",
+    "project_id": "REPLACE_WITH_PROJECT_ID",
+    "storage_bucket": "REPLACE_WITH_STORAGE_BUCKET"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:757439910106:android:c79818bdcfa0c6d10495e3",
+        "mobilesdk_app_id": "REPLACE_WITH_ANDROID_APP_ID",
         "android_client_info": {
           "package_name": "com.example.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "757439910106-akep2e6i7rd45lnuk9cqe2qnegfm90t7.apps.googleusercontent.com",
+          "client_id": "REPLACE_WITH_ANDROID_OAUTH_CLIENT_ID",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.app",
-            "certificate_hash": "802ca4b81c872659b1ee8716c06b81e7b5f56b25"
+            "certificate_hash": "REPLACE_WITH_SHA1"
           }
         },
         {
-          "client_id": "757439910106-fhe0qeeb1vsg522v4m92gc5ljfdk7ren.apps.googleusercontent.com",
+          "client_id": "REPLACE_WITH_GENERIC_OAUTH_CLIENT_ID",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD2jyfzeXRdQeerSo-e4nlr9N6_nMGlgic"
+          "current_key": "REPLACE_WITH_ANDROID_API_KEY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "757439910106-fhe0qeeb1vsg522v4m92gc5ljfdk7ren.apps.googleusercontent.com",
+              "client_id": "REPLACE_WITH_GENERIC_OAUTH_CLIENT_ID",
               "client_type": 3
             },
             {
-              "client_id": "757439910106-osohknlbkbf4vubtgb16rftv7ugatv95.apps.googleusercontent.com",
+              "client_id": "REPLACE_WITH_IOS_OAUTH_CLIENT_ID",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.example.app"
