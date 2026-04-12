@@ -2,6 +2,7 @@
 *.pptx
 *.ppt
 *.docx
+*.pdf
 
 # Homework instruction files (source, not needed in repo)
 Homework*.txt
@@ -28,6 +29,10 @@ desktop.ini
 # Generated files
 *.g.dart
 *.freezed.dart
+key.properties
+*.jks
+*.keystore
+coverage/
 
 # Miscellaneous
 *.log
