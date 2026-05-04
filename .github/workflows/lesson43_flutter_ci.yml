@@ -1,0 +1,98 @@
+name: Lesson 43 Flutter CI/CD
+
+on:
+  push:
+    paths:
+      - '.github/workflows/lesson43_flutter_ci.yml'
+      - 'lessons/lesson_43/**'
+  pull_request:
+    paths:
+      - '.github/workflows/lesson43_flutter_ci.yml'
+      - 'lessons/lesson_43/**'
+
+jobs:
+  # ── CI: runs on every push/PR ─────────────────────────────────────────────
+  ci:
+    name: Analyze, Test & Debug Builds
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: lessons/lesson_43/app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.1'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+      - name: Build debug APK — dev flavor
+        run: flutter build apk --debug --flavor dev -t lib/main_dev.dart
+
+      - name: Build debug APK — prod flavor
+        run: flutter build apk --debug --flavor prod -t lib/main_prod.dart
+
+      - name: Upload debug APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-apks
+          path: |
+            lessons/lesson_43/app/build/app/outputs/flutter-apk/*debug*.apk
+
+  # ── Release: only on pushes to main ──────────────────────────────────────
+  release:
+    name: Release Builds (auto build number)
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: ci
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: lessons/lesson_43/app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.1'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # github.run_number is unique per workflow run and auto-increments.
+      # It becomes the Android versionCode / iOS CFBundleVersion.
+      - name: Build release APK — dev flavor
+        run: |
+          flutter build apk --release \
+            --flavor dev \
+            -t lib/main_dev.dart \
+            --build-number=${{ github.run_number }}
+
+      - name: Build release APK — prod flavor
+        run: |
+          flutter build apk --release \
+            --flavor prod \
+            -t lib/main_prod.dart \
+            --build-number=${{ github.run_number }}
+
+      - name: Upload release APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apks-build-${{ github.run_number }}
+          path: |
+            lessons/lesson_43/app/build/app/outputs/flutter-apk/*release*.apk
